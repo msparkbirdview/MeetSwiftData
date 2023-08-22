@@ -31,9 +31,17 @@
 /// THE SOFTWARE.
 
 import Foundation
+import SwiftData
 
-struct MovieModel {
+@Model
+class MovieModel {
   var genre: String
   var title: String
   var releaseDate: Date
+
+  init(genre: String, title: String, releaseDate: Date) {
+    self.genre = genre
+    self.title = title
+    self.releaseDate = releaseDate
+  }
 }
