@@ -78,6 +78,17 @@ struct MovieList: View {
   func addMovie(title: String, genre: String, releaseDate: Date) {
     let newMovieModel = MovieModel(genre: genre, title: title, releaseDate: releaseDate)
     modelContext.insert(newMovieModel)
+
+    /// insert 된 모델 정보 확인
+    let predicate = #Predicate<MovieModel>{
+      $0.title == title
+    }
+
+    let descriptor = FetchDescriptor<MovieModel>(predicate: predicate)
+
+    guard let movies = try? modelContext.fetch(descriptor) else { return }
+
+    debugPrint(movies.first?.title)
   }
 }
 
