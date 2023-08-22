@@ -31,23 +31,14 @@
 /// THE SOFTWARE.
 
 import SwiftUI
+import SwiftData
 
 // swiftlint:disable multiple_closures_with_trailing_closure
 struct MovieList: View {
-  @Environment(\.managedObjectContext) var managedObjectContext
-  // 1.
-  @FetchRequest(
-    // 2.
-    entity: Movie.entity(),
-    // 3.
-    sortDescriptors: [
-      NSSortDescriptor(keyPath: \Movie.title, ascending: true)
-    ]
-    //,predicate: NSPredicate(format: "genre contains 'Action'")
-    // 4.
-  ) var movies: FetchedResults<Movie>
-
   @State var isPresented = false
+
+  @Query var movies: [MovieModel]
+  @Environment(\.modelContext) private var modelContext
 
   var body: some View {
     NavigationView {
@@ -79,34 +70,14 @@ struct MovieList: View {
       let movie = self.movies[index]
 
       // 3.
-      self.managedObjectContext.delete(movie)
+      self.modelContext.delete(movie)
     }
-
-    // 4.
-    saveContext()
   }
 
 
   func addMovie(title: String, genre: String, releaseDate: Date) {
-    // 1
-    let newMovie = Movie(context: managedObjectContext)
-
-    // 2
-    newMovie.title = title
-    newMovie.genre = genre
-    newMovie.releaseDate = releaseDate
-
-    // 3
-    saveContext()
-  }
-
-
-  func saveContext() {
-    do {
-      try managedObjectContext.save()
-    } catch {
-      print("Error saving managed object context: \(error)")
-    }
+    let newMovieModel = MovieModel(genre: genre, title: title, releaseDate: releaseDate)
+    modelContext.insert(newMovieModel)
   }
 }
 

@@ -33,7 +33,7 @@
 import SwiftUI
 
 struct MovieRow: View {
-  let movie: Movie
+  let movie: MovieModel
   static let releaseFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .long
@@ -42,13 +42,13 @@ struct MovieRow: View {
 
   var body: some View {
     VStack(alignment: .leading) {
-      movie.title.map(Text.init)
+      Text(movie.title)
         .font(.title)
       HStack {
-        movie.genre.map(Text.init)
+        Text(movie.genre)
           .font(.caption)
         Spacer()
-        movie.releaseDate.map { Text(Self.releaseFormatter.string(from: $0)) }
+        Text(Self.releaseFormatter.string(from: movie.releaseDate))
           .font(.caption)
       }
     }
