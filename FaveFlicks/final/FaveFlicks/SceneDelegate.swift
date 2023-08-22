@@ -31,7 +31,6 @@
 /// THE SOFTWARE.
 
 import SwiftUI
-import CoreData
 import SwiftData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -43,9 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     options connectionOptions: UIScene.ConnectionOptions
   ) {
 
-    let context = persistentContainer.viewContext
     let contentView = MovieList()
-      .environment(\.managedObjectContext, context)
       .modelContainer(for: [MovieModel.self])
 
     if let windowScene = scene as? UIWindowScene {
@@ -56,36 +53,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
   }
 
-  func sceneDidEnterBackground(_ scene: UIScene) {
-    saveContext()
-  }
-
-  // MARK: - Core Data stack
-
-  lazy var persistentContainer: NSPersistentContainer = {
-    let container = NSPersistentContainer(name: "FaveFlicks")
-    container.loadPersistentStores { _, error in
-      if let error = error as NSError? {
-        // You should add your own error handling code here.
-        fatalError("Unresolved error \(error), \(error.userInfo)")
-      }
-    }
-    return container
-  }()
-
-  // MARK: - Core Data Saving support
-
-  func saveContext() {
-    let context = persistentContainer.viewContext
-    if context.hasChanges {
-      do {
-        try context.save()
-      } catch {
-        // The context couldn't be saved.
-        // You should add your own error handling here.
-        let nserror = error as NSError
-        fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-      }
-    }
-  }
+  func sceneDidEnterBackground(_ scene: UIScene) {}
 }
