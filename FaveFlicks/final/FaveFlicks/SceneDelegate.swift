@@ -32,6 +32,7 @@
 
 import SwiftUI
 import CoreData
+import SwiftData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   var window: UIWindow?
@@ -41,8 +42,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     willConnectTo session: UISceneSession,
     options connectionOptions: UIScene.ConnectionOptions
   ) {
+
     let context = persistentContainer.viewContext
-    let contentView = MovieList().environment(\.managedObjectContext, context)
+    let contentView = MovieList()
+      .environment(\.managedObjectContext, context)
+      .modelContainer(for: [MovieModel.self])
 
     if let windowScene = scene as? UIWindowScene {
       let window = UIWindow(windowScene: windowScene)
