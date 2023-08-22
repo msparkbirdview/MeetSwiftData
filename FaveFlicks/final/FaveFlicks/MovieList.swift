@@ -37,7 +37,7 @@ import SwiftData
 struct MovieList: View {
   @State var isPresented = false
 
-  @Query var movies: [MovieModel]
+  @Query(sort: \MovieModel.releaseDate, order: .forward) var movies: [MovieModel]
   @Environment(\.modelContext) private var modelContext
 
   var body: some View {
