@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25971B552A94EB390038ECA7 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25971B542A94EB390038ECA7 /* MovieModel.swift */; };
 		95710F65240A87F700911BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95710F64240A87F700911BD1 /* AppDelegate.swift */; };
 		95710F67240A87F700911BD1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95710F66240A87F700911BD1 /* SceneDelegate.swift */; };
 		95710F6A240A87F700911BD1 /* FaveFlicks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95710F68240A87F700911BD1 /* FaveFlicks.xcdatamodeld */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25971B542A94EB390038ECA7 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		95710F61240A87F700911BD1 /* FaveFlicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaveFlicks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95710F64240A87F700911BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95710F66240A87F700911BD1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				95710F7D240A889600911BD1 /* Info.plist */,
 				95710F68240A87F700911BD1 /* FaveFlicks.xcdatamodeld */,
 				95710F6F240A87FA00911BD1 /* Preview Content */,
+				25971B542A94EB390038ECA7 /* MovieModel.swift */,
 			);
 			path = FaveFlicks;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25971B552A94EB390038ECA7 /* MovieModel.swift in Sources */,
 				95710F83240A889600911BD1 /* MovieList.swift in Sources */,
 				95710F6A240A87F700911BD1 /* FaveFlicks.xcdatamodeld in Sources */,
 				95710F80240A889600911BD1 /* MovieRow.swift in Sources */,
